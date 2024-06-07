@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "ClientTester";
+
+package mydata;
+
+service Dater {
+//CRUD for myData
+  rpc Add (AddRequest) returns (AddReply);
+  rpc Remove (RemoveRequest) returns (RemoveReply);
+  rpc Get (GetRequest) returns (GetReply);
+  rpc GetAll (GetAllRequest) returns (GetAllReply);
+}
+
+
+
+message AddRequest {
+  int32 id = 1;
+  string data = 2;
+}
+
+message AddReply {
+  bool isAdded = 1;
+}
+
+message RemoveRequest {
+  int32 id = 1;
+}
+
+message RemoveReply {
+  bool isRemoved = 1;
+}
+
+message GetRequest {
+  int32 id = 1;
+}
+
+message GetReply {
+  bool isSuccess = 1;
+  int32 id = 2;
+  string data = 3;
+}
+
+message GetAllRequest {
+ 
+}
+
+message GetAllReply {
+ repeated GetReply replies = 1;
+}
